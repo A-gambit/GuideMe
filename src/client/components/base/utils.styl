@@ -1,0 +1,17 @@
+icon-helper(file)
+  size = image-size(file)
+  w = size[0]
+  h = size[1]
+  width w
+  height h
+  background: url(file)
+
+placeholder()
+  &::-webkit-input-placeholder
+    {block}
+  &:-moz-placeholder
+    {block}
+  &::-moz-placeholder
+    {block}
+  &:-ms-input-placeholder
+    {block}

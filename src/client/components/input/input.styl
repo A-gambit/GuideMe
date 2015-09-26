@@ -1,0 +1,29 @@
+@import '../base/utils.styl'
+
+.input, .textarea
+  width 100%
+  background rgba(255, 255, 255, 0.5)
+  border none
+  padding 6px 10px
+  outline none
+  margin-bottom 10px
+  box-shadow none
+  resize none
+  +placeholder()
+    font-weight 100
+    -webkit-font-smoothing antialiased
+    text-align center
+    text-transform uppercase
+    &:focus
+      text-align right
+  &-error
+    position absolute
+    margin-top 5px
+    margin-left 10px
+    color #DA5B5B
+    &:before
+      icon-helper('./img/error.png')
+      content ''
+      position absolute
+      margin-left -35px
+      margin-top 3px
