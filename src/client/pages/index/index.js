@@ -22,11 +22,11 @@ export default React.createClass({
     this.setState({posts})
   },
 
-  addItem({id, title, img, avatar, author}) {
+  addItem({_id, title, img, avatar, author}) {
     return (
-      <div className='index-card' key={id}>
+      <div className='index-card' key={_id}>
         <div className='index-title-wrapper'>
-          <Link to={`/post/${id}`} className='index-title' dangerouslySetInnerHTML={{__html: title || ''}}></Link>
+          <Link to={`/post/${_id}`} className='index-title' dangerouslySetInnerHTML={{__html: title || ''}}></Link>
         </div>
         <div className='index-img-wrapper'>
           <img src={`/assets/img_server/${img}`} className='index-img' />

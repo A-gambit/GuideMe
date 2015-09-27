@@ -1,9 +1,8 @@
-import DB from '../db'
+import Feed from '../models/feed'
 
 class FeedHandler {
   getFeed(req, res, next) {
-    let feed = DB.getData('feed')
-    res.send(feed)
+    Feed.getValues((posts) => res.status(200).send({posts}))
   }
 }
 

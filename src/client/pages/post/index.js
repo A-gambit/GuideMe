@@ -26,9 +26,9 @@ let Post = React.createClass({
     this.setState({posts})
   },
 
-  addContent({id, title, text, img, author, avatar}) {
+  addContent({_id, title, text, img, author, avatar}) {
     return (
-      <div className='post-content' key={id}>
+      <div className='post-content' key={_id}>
         <div className='post-title-wrapper'>
           <span className='post-title' dangerouslySetInnerHTML={{__html: title || ''}}></span>
         </div>
@@ -48,9 +48,10 @@ let Post = React.createClass({
   },
 
   render() {
+    let post = this.state.posts.filter(({_id}) => _id == this.state.id)[0]
     return (
       <div>
-        {this.state.posts[this.state.id] && this.addContent(this.state.posts[this.state.id])}
+        {post && this.addContent(post)}
       </div>
     )
   }
