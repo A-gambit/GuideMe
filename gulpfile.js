@@ -65,11 +65,6 @@ gulp.task('serve:nodemon', function (done) {
     function() {done()})
 })
 
-gulp.task('serve:webpack', function (done) {
-  sh.exec('webpack-dev-server --hot --inline --colors --content-base=\'./src\' --config=\'webpack.client.js\'',
-    function() {done()})
-})
-
 gulp.task('serve:nodemon:debug', function() {
   sh.exec('./node_modules/.bin/nodemon --watch ./src/server ./node_modules/.bin/babel-node --debug --stage 0 -- ./src/server/index.js --debug',
     function() {done()})
@@ -80,7 +75,7 @@ gulp.task('serve:nodemon:inspector', function() {
     function() {done()})
 })
 
-gulp.task('debug', ['serve:webpack', 'serve:nodemon:debug', 'serve:nodemon:inspector', 'build:style', 'watch'])
+gulp.task('debug', ['serve:nodemon:debug', 'serve:nodemon:inspector', 'build:style', 'watch'])
 
 
 if (process.env.NODE_ENV !== 'production') {
