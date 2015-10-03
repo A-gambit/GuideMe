@@ -34,7 +34,7 @@ tasks.forEach(function (name) {
 })
 
 gulp.task('img:client', function () {
-  gulp.src('./src/client/**/*.{png,jpg,woff,eof,svg}')
+  gulp.src('./src/client/**/*.{png,jpg, woff,eof,svg,gif}')
     .pipe(rename(function (path) {
       path.dirname = ''
     }))
@@ -42,7 +42,7 @@ gulp.task('img:client', function () {
 })
 
 gulp.task('img:server', function () {
-  gulp.src('./src/server/**/*.{png,jpg,woff,eof,svg}')
+  gulp.src('./src/server/**/*.{png,jpg, woff,eof,svg,gif}')
     .pipe(rename(function (path) {
       path.dirname = ''
     }))
@@ -83,10 +83,10 @@ if (process.env.NODE_ENV !== 'production') {
     watch('./src/**/*.styl', function () {
       gulp.start('build:style')
     })
-    watch('./src/client/**/*.{png,jpg,woff,eof,svg}', function () {
+    watch('./src/client/**/*.{png,jpg,woff,eof,svg,gif}', function () {
       gulp.start('img:client')
     })
-    watch('./src/server/**/*.{png,jpg,woff,eof,svg}', function () {
+    watch('./src/server/**/*.{png,jpg,woff,eof,svg,gif}', function () {
       gulp.start('img:server')
     })
     gulp.watch('./src/client/**/*.js', ['build:client'])
@@ -99,10 +99,10 @@ else {
     watch('./src/**/*.styl', function () {
       gulp.start('build:style')
     })
-    watch('./src/client/**/*.{png,jpg,woff,eof,svg}', function () {
+    watch('./src/client/**/*.{png,jpg,woff,eof,svg,gif}', function () {
       gulp.start('img:client')
     })
-    watch('./src/server/**/*.{png,jpg,woff,eof,svg}', function () {
+    watch('./src/server/**/*.{png,jpg,woff,eof,svg,gif}', function () {
       gulp.start('img:server')
     })
     gulp.watch('./src/server/**/*.js', ['build:server'])

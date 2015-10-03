@@ -7,9 +7,12 @@ export default React.createClass({
   mixins: [addons.PureRenderMixin, Navigation],
 
   render() {
-    let className = 'oops'
+    let className='oops'
     return (
       <div className={className}>
+        <div className='oops-error'>
+          <img src='./assets/img/sad-walk.gif' />
+        </div>
         <span className={`${className}-title`}>Oops!</span>
         <span className={`${className}-sub`}>
           We can't seem to find the<br />
