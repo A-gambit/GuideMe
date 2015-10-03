@@ -1,4 +1,7 @@
 import Contact from '../models/contact'
+import ipware from 'ipware'
+
+let {get_ip} = ipware()
 
 class ContactHandler {
   init(req, res, next) {
@@ -32,13 +35,16 @@ class ContactHandler {
 
   setData(req, res, next) {
     let {validation} = req
-    Contact.addValue(req.body, (err, contact) => {
-      res.status(200).send({success: true, validation})
-    })
+    req.body.ip = get_ip(req).clientIp
+    Contact.addValue(req.body, (err, contact) => res.status(200).send({success: true, validation}))
   }
 
   getData(req, res, next) {
-    Contact.getValues((contacts) => res.status(200).send({contacts}))
+    Contact.getValues(contacts => res.status(200).send({contacts}))
+  }
+
+  getСount(req, res, next) {
+    Contact.getСount(count => res.status(200).send({count}))
   }
 }
 

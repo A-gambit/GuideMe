@@ -32,15 +32,17 @@ let schema = new Schema({
 schema.statics.addValue = function ({title, author, avatar, text, img}, callback) {
   let Feed = this
   let post = new Feed({title, author, avatar, text, img})
-  post.save((err) => {
-    if (err) return callback(err)
-    callback(null, post)
-  })
+  post.save(err => callback(err, post))
 }
 
 schema.statics.getValues = function (callback) {
   let Feed = this
-  Feed.find({}, (err, post) => callback(post))
+  Feed.find({}).sort({'date': -1}).exec((err, post) => callback(post))
+}
+
+schema.statics.removeItems = function (callback) {
+  let Feed = this
+  Feed.remove({}, err => callback())
 }
 
 export default mongoose.model('Feed', schema)

@@ -24,6 +24,7 @@ export default () => {
       handler.contact.setData
     )
     .get('/', handler.contact.getData)
+    .get('/count', handler.contact.getСount)
   app.use('/contact', contact)
 
   return app

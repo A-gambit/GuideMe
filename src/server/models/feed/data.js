@@ -1,6 +1,8 @@
 import Feed from './index.js'
+import async from 'async'
 
-let feed = [
+
+const feed = [
   {
     "title": "I Went On The Weirdest<br />Spring Break Trip You’ve<br/>Ever Heard Of",
     "author": "Andy Osmani",
@@ -31,4 +33,11 @@ let feed = [
   }
 ]
 
-feed.forEach(post => Feed.addValue(post))
+export default (cb) => Feed.removeItems(() =>
+  async.each(feed, (post, callback) => {
+    Feed.addValue(post, (err, post) => {
+      console.log(post)
+      callback()
+    })
+  }, err => cb(err))
+)
