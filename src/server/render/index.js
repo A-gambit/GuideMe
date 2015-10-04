@@ -17,8 +17,7 @@ export default () => {
           <link rel='stylesheet' href='/assets/style.css' />
           <script src="/assets/client.js" defer />
         </head>
-        <body dangerouslySetInnerHTML={{__html: bodyContent}}>
-        </body>
+        <body dangerouslySetInnerHTML={{__html: bodyContent}}></body>
         </html>
       )
       res.setHeader('Content-Type', 'text/html')
