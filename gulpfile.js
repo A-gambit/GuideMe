@@ -17,7 +17,10 @@ var babelNode = './node_modules/.bin/babel-node '
 var inspector = './node_modules/.bin/node-inspector --web-port=8081'
 var server = './src/server'
 
-var searchImg = './src/client/**/*.{png,jpg,woff,eof,svg,gif}'
+
+var searchImgClient = './src/client/**/*.{png,jpg,woff,eof,svg,gif}'
+var searchImgServer = './src/server/**/*.{png,jpg,woff,eof,svg,gif}'
+
 
 var autoprefixerBrowsers = [
   'ie >= 9',
@@ -36,14 +39,16 @@ gulp.task('build:client', function (done) {
   webpack(config, function () { done() })
 })
 
+
+
 gulp.task('img:client', function () {
-  gulp.src(searchImg)
+  gulp.src(searchImgClient)
     .pipe(rename(function (path) { path.dirname = '' }))
     .pipe(gulp.dest('./dist/assets/img/'))
 })
 
 gulp.task('img:server', function () {
-  gulp.src(searchImg)
+  gulp.src(searchImgServer)
     .pipe(rename(function (path) {
       path.dirname = ''
     }))
@@ -84,10 +89,10 @@ if (process.env.NODE_ENV !== 'production') {
     watch('./src/**/*.styl', function () {
       gulp.start('build:style')
     })
-    watch(searchImg, function () {
+    watch(searchImgClient, function () {
       gulp.start('img:client')
     })
-    watch(searchImg, function () {
+    watch(searchImgServer, function () {
       gulp.start('img:server')
     })
     gulp.watch('./src/client/**/*.js', ['build:client'])
@@ -100,10 +105,10 @@ else {
     watch('./src/**/*.styl', function () {
       gulp.start('build:style')
     })
-    watch(searchImg, function () {
+    watch(searchImgClient, function () {
       gulp.start('img:client')
     })
-    watch(searchImg, function () {
+    watch(searchImgServer, function () {
       gulp.start('img:server')
     })
     gulp.watch('./src/client/**/*.js', ['build:client'])

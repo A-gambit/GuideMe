@@ -38,7 +38,7 @@
     "webpack": "^1.9.10"
   },
   "scripts": {
-    "init_db": "./node_modules/.bin/babel-node ./src/server/models/data",
+    "db": "./node_modules/.bin/babel-node ./src/server/models/data",
     "build": "node ./node_modules/gulp/bin/gulp.js build:prod",
     "debug": "node ./node_modules/gulp/bin/gulp.js debug",
     "postinstall": "npm run build",
