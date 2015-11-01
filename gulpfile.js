@@ -14,25 +14,12 @@ var stylus = require('gulp-stylus')
 
 var nodemon = './node_modules/.bin/nodemon --watch '
 var babelNode = './node_modules/.bin/babel-node '
-var inspector = './node_modules/.bin/node-inspector --web-port=8081'
+var inspector = './node_modules/.bin/node-inspector --web-port=8084'
 var server = './src/server'
 
 
 var searchImgClient = './src/client/**/*.{png,jpg,woff,eof,svg,gif}'
 var searchImgServer = './src/server/**/*.{png,jpg,woff,eof,svg,gif}'
-
-
-var autoprefixerBrowsers = [
-  'ie >= 9',
-  'ie_mob >= 10',
-  'ff >= 30',
-  'chrome >= 34',
-  'safari >= 6',
-  'opera >= 23',
-  'ios >= 6',
-  'android >= 4.4',
-  'bb >= 10'
-]
 
 gulp.task('build:client', function (done) {
   var config = require('./webpack.client.js')
